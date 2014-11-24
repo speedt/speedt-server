@@ -1,0 +1,21 @@
+{
+  "name": "speedt",
+  "version": "1.0.0",
+  "description": "speedt",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/speedt/speedt-server.git"
+  },
+  "dependencies": {
+    "async": "0.9.0",
+    "toobusy": "0.2.4",
+    "seq-queue": "0.0.5"
+  },
+  "author": "huangxin",
+  "license": "MIT",
+  "homepage": "https://github.com/speedt/speedt-server"
+}
