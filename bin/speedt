@@ -6,7 +6,12 @@
  */
 'use strict';
 
-var program = require('commander');
+var util = require('util'),
+	fs = require('fs'),
+	path = require('path'),
+	cliff = require('cliff'),
+	colors = require('colors'),
+	program = require('commander');
 
 var version = require('../package.json').version;
 
@@ -18,7 +23,8 @@ var DEFAULT = {
 };
 
 var ERROR = {
-	COMMAND: 'Illegal command format. Use `speedt --help` to get more info.\n'
+	COMMAND: 'Illegal command format. Use `speedt --help` to get more info.'.red,
+	SCRIPT_NOT_FOUND: 'Fail to find an appropriate script to run,\nplease check the current work directory or the directory specified by option `--directory`.'
 };
 
 program.version(version);
@@ -42,5 +48,13 @@ program.command('*')
 program.parse(process.argv);
 
 function start(opts){
-	console.log(arguments)
+	var absScript = path.resolve(opts.directory, 'app.js');
+	if(!fs.existsSync(absScript)) {
+		abort(ERROR.SCRIPT_NOT_FOUND);
+	}
+}
+
+function abort(str){
+	console.error(str);
+	process.exit(1);
 }
