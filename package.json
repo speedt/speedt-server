@@ -1,8 +1,13 @@
 {
   "name": "speedt",
-  "version": "1.0.0",
-  "description": "speedt",
+  "version": "0.1.2",
+  "description": "socket",
   "main": "index.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "seq-queue": "^0.0.5"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "test.js"
   },
@@ -10,12 +15,15 @@
     "type": "git",
     "url": "https://github.com/speedt/speedt-server.git"
   },
-  "dependencies": {
-    "async": "0.9.0",
-    "toobusy": "0.2.4",
-    "seq-queue": "0.0.5"
-  },
+  "keywords": [
+    "tcp",
+    "udp",
+    "socket"
+  ],
   "author": "huangxin",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/speedt/speedt-server/issues"
+  },
   "homepage": "https://github.com/speedt/speedt-server"
 }
