@@ -4,6 +4,7 @@
   "description": "socket",
   "main": "index.js",
   "dependencies": {
+    "speedt-utils": "0.1.2",
     "async": "^0.9.0",
     "seq-queue": "^0.0.5"
   },
