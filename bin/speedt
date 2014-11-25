@@ -24,7 +24,7 @@ var DEFAULT = {
 
 var ERROR = {
 	COMMAND: 'Illegal command format. Use `speedt --help` to get more info.'.red,
-	SCRIPT_NOT_FOUND: 'Fail to find an appropriate script to run,\nplease check the current work directory or the directory specified by option `--directory`.'
+	SCRIPT_NOT_FOUND: 'Fail to find an appropriate script to run,\nplease check the current work directory or the directory specified by option `--directory`.'.red
 };
 
 program.version(version);
@@ -33,8 +33,8 @@ program.command('start')
 	.description('start the application')
 	.option('-e, --env <env>', 'the used environment', DEFAULT.ENV)
 	.option('-D, --daemon', 'enable the daemon start')
-	.option('-d, --directory, <directory>', 'the code directory', DEFAULT.SERVER_DIR)
-	.option('-t, --type <server-type>,', 'start server type')
+	.option('-d, --directory <directory>', 'the code directory', DEFAULT.SERVER_DIR)
+	.option('-t, --type <server-type>', 'start server type')
 	.option('-i, --id <server-id>', 'start server id')
 	.action(function (opts){
 		start(opts);
@@ -49,7 +49,7 @@ program.parse(process.argv);
 
 function start(opts){
 	var absScript = path.resolve(opts.directory, 'app.js');
-	if(!fs.existsSync(absScript)) {
+	if(!fs.existsSync(absScript)){
 		abort(ERROR.SCRIPT_NOT_FOUND);
 	}
 }
