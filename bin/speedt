@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+/*!
+ * speedt
+ * Copyright(c) 2014 huangxin <huangxin@foreworld.net>
+ * MIT Licensed
+ */
+'use strict';
+
+var program = require('commander');
+
+var version = require('../package.json').version;
+
+var CUR_DIR = process.cwd();
+
+var DEFAULT = {
+	ENV: 'development',
+	SERVER_DIR: CUR_DIR
+};
+
+var ERROR = {
+	COMMAND: 'Illegal command format. Use `speedt --help` to get more info.\n'
+};
+
+program.version(version);
+
+program.command('start')
+	.description('start the application')
+	.option('-e, --env <env>', 'the used environment', DEFAULT.ENV)
+	.option('-D, --daemon', 'enable the daemon start')
+	.option('-d, --directory, <directory>', 'the code directory', DEFAULT.SERVER_DIR)
+	.option('-t, --type <server-type>,', 'start server type')
+	.option('-i, --id <server-id>', 'start server id')
+	.action(function (opts){
+		start(opts);
+	});
+
+program.command('*')
+	.action(function(){
+		console.error(ERROR.COMMAND);
+	});
+
+program.parse(process.argv);
+
+function start(opts){
+	console.log(arguments)
+}
