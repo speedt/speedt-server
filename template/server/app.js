@@ -7,6 +7,8 @@
 
 var utils = require('speedt-utils');
 
+var uplserv = require('../../');
+
 process.on('uncaughtException', function (err){
 	console.error('[%s] caught exception: %j.', utils.format(), err.stack);
 });
@@ -17,4 +19,8 @@ process.on('exit', function (code){
 		return
 	}
 	console.error('[%s] process exit with code: %s.', utils.format(), code)
+});
+
+uplserv.createApp(null, function(){
+	// TODO
 });
