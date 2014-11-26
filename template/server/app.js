@@ -22,5 +22,12 @@ process.on('exit', function (code){
 });
 
 uplserv.createApp(null, function(){
-	// TODO
+	var self = this;
+
+	self.start(function (err){
+		if(err){
+			console.error('[%s] app start error: %j.', utils.format(), err.message);
+			return;
+		}
+	});
 });
