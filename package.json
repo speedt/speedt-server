@@ -1,6 +1,6 @@
 {
   "name": "speedt",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "socket",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
     "cliff": "0.1.8",
     "ws": "0.4.25",
     "commander": "2.0.0",
-    "speedt-utils": "0.1.3",
+    "speedt-utils": "0.1.6",
     "async": "^0.9.0",
     "seq-queue": "^0.0.5"
   },
@@ -28,7 +28,7 @@
     "udp",
     "socket"
   ],
-  "author": "huangxin",
+  "author": "speedt",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/speedt/speedt-server/issues"

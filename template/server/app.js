@@ -1,6 +1,6 @@
 /*!
  * speedt
- * Copyright(c) 2014 huangxin <huangxin@foreworld.net>
+ * Copyright(c) 2014 speedt <13837186852@qq.com>
  * MIT Licensed
  */
 'use strict';
