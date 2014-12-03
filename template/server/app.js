@@ -24,6 +24,10 @@ process.on('exit', function (code){
 uplserv.createApp(null, function(){
 	var self = this;
 
+	self.configure('production|development', 'connector', function(){
+		// TODO
+	});
+
 	self.start(function (err){
 		if(err){
 			console.error('[%s] app start error: %j.', utils.format(), err.message);

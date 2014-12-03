@@ -11,15 +11,23 @@ var util = require('util'),
 	path = require('path'),
 	cliff = require('cliff'),
 	colors = require('colors'),
+	utils = require('speedt-utils'),
+	cp = require('child_process'),
+	spawn = cp.spawn,
 	program = require('commander');
 
-var version = require('../package.json').version;
+var version = require('../package.json').version,
+	constants = require('../lib/util/constants');
 
 var CUR_DIR = process.cwd();
 
 var DEFAULT = {
 	ENV: 'development',
 	SERVER_DIR: CUR_DIR
+};
+
+var INFO = {
+	DAEMON: 'The application is running in the background now.'
 };
 
 var ERROR = {
@@ -51,6 +59,19 @@ function start(opts){
 	var absScript = path.resolve(opts.directory, 'app.js');
 	if(!fs.existsSync(absScript)){
 		abort(ERROR.SCRIPT_NOT_FOUND);
+	}
+
+	var ls,
+		type = opts.type || constants.RESERVED.ALL,
+		params = [absScript, 'env='+ opts.env, 'type='+ type];
+
+	if(opts.daemon){
+		ls = spawn(process.execPath, params, { detached: true, stdio: 'ignore' });
+		ls.unref();
+		console.log(INFO.DAEMON);
+		process.exit(0);
+	}else{
+		ls = spawn(process.execPath, params);
 	}
 }
 
