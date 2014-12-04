@@ -24,8 +24,15 @@ process.on('exit', function (code){
 uplserv.createApp(null, function(){
 	var self = this;
 
-	self.configure('production|development', 'connector', function(){
-		// TODO
+	self.configure('production|development', function(){
+		self.filter(uplserv.timeout());
+	});
+
+	self.configure('production|development', 'uplserv', function(){
+		self.set('connectorConfig', {
+			connector: uplserv.connectors.hyxconnector,
+			heartbeat: 3
+		})
 	});
 
 	self.start(function (err){
