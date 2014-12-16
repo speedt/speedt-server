@@ -5,40 +5,41 @@
  */
 'use strict';
 
-var utils = require('speedt-utils');
+var utils = require('speedt-utils'),
+	colors = require('colors');
 
-var uplserv = require('../../');
+var app = require('../../');
 
 process.on('uncaughtException', function (err){
-	console.error('[%s] caught exception: %j.', utils.format(), err.stack);
+	console.error(err.stack.red);
 });
 
 process.on('exit', function (code){
 	if(0 === code){
-		console.log('[%s] process exit.', utils.format())
+		console.log('[WARN ] [%s] process exit.'.yellow, utils.format())
 		return
 	}
-	console.error('[%s] process exit with code: %s.', utils.format(), code)
+	console.error('[ERROR] [%s] process exit with code: %s.', utils.format(), code)
 });
 
-uplserv.createApp(null, function(){
+app.createApp(null, function(){
 	var self = this;
 
 	self.configure('production|development', function(){
-		self.filter(uplserv.time());
-		self.filter(uplserv.timeout());
+		self.filter(app.time());
+		self.filter(app.timeout());
 	});
 
-	self.configure('production|development', 'uplserv', function(){
+	self.configure('production|development', 'app', function(){
 		self.set('connectorConfig', {
-			connector: uplserv.connectors.hyxconnector,
+			connector: app.connectors.hyxconnector,
 			heartbeat: 3
 		})
 	});
 
 	self.start(function (err){
 		if(err){
-			console.error('[%s] app start error: %j.', utils.format(), err.message);
+			console.error('[ERROR] [%s] app start error: %j.'.red, utils.format(), err.message);
 			return;
 		}
 	});
