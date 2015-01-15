@@ -1,0 +1,13 @@
+{
+	"development": {
+		"serverType": "upl",
+		"id": "upl-server-1",
+		"host": "127.0.0.1",
+		"port": 5005
+	}, "production": {
+		"serverType": "upl",
+		"id": "upl-server-1",
+		"host": "127.0.0.1",
+		"port": 5005
+	}
+}

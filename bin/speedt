@@ -72,6 +72,17 @@ function start(opts){
 		process.exit(0);
 	}else{
 		ls = spawn(process.execPath, params);
+		ls.stdout.setEncoding('utf-8');
+		ls.stderr.setEncoding('utf-8');
+		// ls.stdout.on('data', function (data){
+		// 	console.log(data.toString());
+		// });
+		// ls.stderr.on('data', function (data){
+		// 	console.log(data.toString());
+		// });
+		// ls.on('exit', function (code){
+		// 	console.log(code)
+		// });
 	}
 }
 
