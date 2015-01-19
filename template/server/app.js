@@ -16,23 +16,23 @@ process.on('uncaughtException', function (err){
 
 process.on('exit', function (code){
 	if(0 === code){
-		console.log('[WARN ] [%s] process exit.'.yellow, utils.format())
-		return
+		console.log('[WARN ] [%s] process exit.'.yellow, utils.format());
+		return;
 	}
-	console.error('[ERROR] [%s] process exit with code: %s.', utils.format(), code)
+	console.error('[ERROR] [%s] process exit with code: %s.', utils.format(), code);
 });
 
 app.createApp(null, function(){
 	var self = this;
 
 	self.configure('production|development', function(){
-		self.filter(app.time());
-		self.filter(app.timeout());
+		self.filter(app.filter.time());
+		self.filter(app.filter.timeout());
 	});
 
-	self.configure('production|development', 'app', function(){
+	self.configure('production|development', 'upl', function(){
 		self.set('connectorConfig', {
-			connector: app.connectors.hyxconnector,
+			connector: app.connector.hyxconnector,
 			heartbeat: 3
 		})
 	});
